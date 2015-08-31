@@ -63,9 +63,12 @@ func IsValid(id, firstName, lastName string, birthYear int) (bool, error) {
 	}
 	defer resp.Body.Close()
 	res, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return false, err
+	}
 	var b response
 	if err = xml.Unmarshal(res, &b); err != nil {
 		return false, err
 	}
-	return b.Body.Response.Result, err
+	return b.Body.Response.Result, nil
 }
