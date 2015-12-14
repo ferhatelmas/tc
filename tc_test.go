@@ -34,3 +34,19 @@ func TestNotValidWithWrongYear(t *testing.T) {
 		t.Fatal(ok, err)
 	}
 }
+
+func TestValidate(t *testing.T) {
+	tests := []struct {
+		id    string
+		valid bool
+	}{
+		{"10000000146", true}, // Ataturk
+		{"10000000147", false},
+		{"17857715056", true},
+	}
+	for i, test := range tests {
+		if Validate(test.id) != test.valid {
+			t.Errorf("%d: Expected %t, got %t for %s", i, test.valid, Validate(test.id), test.id)
+		}
+	}
+}

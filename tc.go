@@ -72,3 +72,32 @@ func IsValid(id, firstName, lastName string, birthYear int) (bool, error) {
 	}
 	return b.Body.Response.Result, nil
 }
+
+// Validate verifies given identification is a valid possible id.
+func Validate(id string) bool {
+	return len(id) == 11 && tenthDigit(id) && eleventhDigit(id)
+}
+
+func tenthDigit(id string) bool {
+	return int(id[9])-'0' == mode(3*sum(id, 0, 9, 2)+sum(id, 1, 8, 2))
+}
+
+func eleventhDigit(id string) bool {
+	return int(id[10])-'0' == mode(sum(id, 0, 9, 2)+3*sum(id, 1, 10, 2))
+}
+
+func mode(x int) int {
+	x = (10 - x) % 10
+	if x < 0 {
+		x += 10
+	}
+	return x
+}
+
+func sum(id string, s, e, t int) int {
+	var n int
+	for ; s < e; s += t {
+		n += int(id[s]) - '0'
+	}
+	return n
+}
