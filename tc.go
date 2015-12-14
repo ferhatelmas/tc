@@ -80,10 +80,10 @@ func toUpper(s string) string {
 
 // IsValid verifies given identification is a valid possible id.
 func IsValid(id string) bool {
-	return len(id) == 11 && contains(id) && tenthDigit(id) && eleventhDigit(id)
+	return len(id) == 11 && validChars(id) && tenthDigit(id) && eleventhDigit(id)
 }
 
-func contains(id string) bool {
+func validChars(id string) bool {
 	for _, c := range id {
 		if c < '0' || c > '9' {
 			return false
