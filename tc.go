@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"strings"
+	"unicode"
 )
 
 // No - models TC Number
@@ -50,7 +51,7 @@ func IsValid(id, firstName, lastName string, birthYear int) (bool, error) {
 	if len(id) != 11 {
 		return false, fmt.Errorf("TC No must be 11 characters")
 	}
-	r := strings.NewReader(fmt.Sprintf(reqBody, id, strings.ToUpper(firstName), strings.ToUpper(lastName), birthYear))
+	r := strings.NewReader(fmt.Sprintf(reqBody, id, toUpper(firstName), toUpper(lastName), birthYear))
 	req, err := http.NewRequest("POST", "https://tckimlik.nvi.gov.tr/Service/KPSPublic.asmx?WSDL", r)
 	if err != nil {
 		return false, err
@@ -71,6 +72,10 @@ func IsValid(id, firstName, lastName string, birthYear int) (bool, error) {
 		return false, err
 	}
 	return b.Body.Response.Result, nil
+}
+
+func toUpper(s string) string {
+	return strings.ToUpperSpecial(unicode.TurkishCase, s)
 }
 
 // Validate verifies given identification is a valid possible id.
