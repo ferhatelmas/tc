@@ -80,7 +80,16 @@ func toUpper(s string) string {
 
 // Validate verifies given identification is a valid possible id.
 func Validate(id string) bool {
-	return len(id) == 11 && tenthDigit(id) && eleventhDigit(id)
+	return len(id) == 11 && contains(id) && tenthDigit(id) && eleventhDigit(id)
+}
+
+func contains(id string) bool {
+	for _, c := range id {
+		if c < '0' || c > '9' {
+			return false
+		}
+	}
+	return true
 }
 
 func tenthDigit(id string) bool {

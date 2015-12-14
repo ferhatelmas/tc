@@ -40,9 +40,12 @@ func TestValidate(t *testing.T) {
 		id    string
 		valid bool
 	}{
+		{"10", false},
+		{"111111111ab", false},
 		{"10000000146", true}, // Ataturk
 		{"10000000147", false},
 		{"17857715056", true},
+		{"17857715050", false},
 	}
 	for i, test := range tests {
 		if Validate(test.id) != test.valid {
