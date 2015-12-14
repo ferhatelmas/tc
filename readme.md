@@ -16,22 +16,22 @@ go get github.com/ferhatelmas/tc
 ```go
 import "github.com/ferhatelmas/tc"
 
-tc.IsValid("17857715056", "ferhat", "elmas", 1988)
-//=> true, nil
-
-tc.IsValid("17857715055", "ferhat", "elmas", 1988)
-//=> false, nil
-
-tc.Validate("17857715056")
+tc.IsValid("17857715056")
 //=> true
 
-tc.Validate("17857715050")
+tc.IsValid("17857715050")
 //=> false
+
+tc.IsValidFor("17857715056", "ferhat", "elmas", 1988)
+//=> true, nil
+
+tc.IsValidFor("17857715055", "ferhat", "elmas", 1988)
+//=> false, nil
 ```
 
-`IsValid` checks if number belongs to given the person identified by given first name, last name and birth year.
+`IsValid` checks if number is a possible correct identification number.
 
-`Validate` checks if number is a possible correct identification number.
+`IsValidFor` checks if number belongs to given the person identified by given first name, last name and birth year.
 
 ### License
 

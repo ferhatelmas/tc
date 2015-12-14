@@ -5,22 +5,22 @@ import (
 	"testing"
 )
 
-func TestIsValid(t *testing.T) {
-	ok, err := IsValid("17857715056", "ferhat", "elmas", 1988)
+func TestIsValidFor(t *testing.T) {
+	ok, err := IsValidFor("17857715056", "ferhat", "elmas", 1988)
 	if err != nil || !ok {
 		t.Fatal(ok, err)
 	}
 }
 
 func TestNotValidWithCorrectParams(t *testing.T) {
-	ok, err := IsValid("17857715056", "ferhat", "elmas", 1989)
+	ok, err := IsValidFor("17857715056", "ferhat", "elmas", 1989)
 	if err != nil || ok {
 		t.Fatal(ok, err)
 	}
 }
 
 func TestNotValidWithWrongNumber(t *testing.T) {
-	_, err := IsValid("1785771505", "ferhat", "elmas", 1988)
+	_, err := IsValidFor("1785771505", "ferhat", "elmas", 1988)
 	if err == nil {
 		t.Fatal("It should have failed but err is nil")
 	} else if !strings.Contains(err.Error(), "11 characters") {
@@ -29,13 +29,13 @@ func TestNotValidWithWrongNumber(t *testing.T) {
 }
 
 func TestNotValidWithWrongYear(t *testing.T) {
-	ok, err := IsValid("17857715056", "ferhat", "elmas", 0)
+	ok, err := IsValidFor("17857715056", "ferhat", "elmas", 0)
 	if err != nil || ok {
 		t.Fatal(ok, err)
 	}
 }
 
-func TestValidate(t *testing.T) {
+func TestIsValid(t *testing.T) {
 	tests := []struct {
 		id    string
 		valid bool
@@ -48,8 +48,8 @@ func TestValidate(t *testing.T) {
 		{"17857715050", false},
 	}
 	for i, test := range tests {
-		if Validate(test.id) != test.valid {
-			t.Errorf("%d: Expected %t, got %t for %s", i, test.valid, Validate(test.id), test.id)
+		if IsValid(test.id) != test.valid {
+			t.Errorf("%d: Expected %t, got %t for %s", i, test.valid, IsValid(test.id), test.id)
 		}
 	}
 }

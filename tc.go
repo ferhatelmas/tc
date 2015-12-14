@@ -45,9 +45,9 @@ var reqBody = `<?xml version="1.0" encoding="utf-8"?>
 </soap:Envelope>
 `
 
-// IsValid checks given TC No is valid or not for given
+// IsValidFor checks given TC No is valid or not for given
 // first, last name and birth year.
-func IsValid(id, firstName, lastName string, birthYear int) (bool, error) {
+func IsValidFor(id, firstName, lastName string, birthYear int) (bool, error) {
 	if len(id) != 11 {
 		return false, fmt.Errorf("TC No must be 11 characters")
 	}
@@ -78,8 +78,8 @@ func toUpper(s string) string {
 	return strings.ToUpperSpecial(unicode.TurkishCase, s)
 }
 
-// Validate verifies given identification is a valid possible id.
-func Validate(id string) bool {
+// IsValid verifies given identification is a valid possible id.
+func IsValid(id string) bool {
 	return len(id) == 11 && contains(id) && tenthDigit(id) && eleventhDigit(id)
 }
 
