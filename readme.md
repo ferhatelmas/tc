@@ -1,4 +1,4 @@
-## tc
+## tc - Turkish Identification Number Validator
 
 [![Godoc](http://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/ferhatelmas/tc)
 [![Build Status](https://travis-ci.org/ferhatelmas/tc?branch=master)](https://travis-ci.org/ferhatelmas/tc)
@@ -31,7 +31,11 @@ tc.IsValidFor("17857715055", "ferhat", "elmas", 1988)
 
 `IsValid` checks if number is a possible correct identification number.
 
-`IsValidFor` checks if number belongs to given the person identified by given first name, last name and birth year.
+`IsValidFor` checks if number belongs to the person identified by given first name, last name and birth year.
+
+### Related
+
+For more information about number itself, see [Turkish Identification Number on Wikipedia](https://en.wikipedia.org/wiki/Turkish_Identification_Number).
 
 ### License
 
