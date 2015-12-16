@@ -9,14 +9,6 @@ import (
 	"unicode"
 )
 
-// No - models TC Number
-type No struct {
-	ID        string
-	FirstName string
-	LastName  string
-	BirthYear int
-}
-
 type response struct {
 	XMLName xml.Name
 	Body    body
