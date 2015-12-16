@@ -1,7 +1,7 @@
 ## tc - Turkish Identification Number Validator
 
 [![Godoc](http://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/ferhatelmas/tc)
-[![Build Status](https://travis-ci.org/ferhatelmas/tc?branch=master)](https://travis-ci.org/ferhatelmas/tc)
+[![Build Status](https://travis-ci.org/ferhatelmas/tc.png?branch=master)](https://travis-ci.org/ferhatelmas/tc)
 
 > Check if Turkish Republic Identification Number you have is valid for first, last name and birth year.
 
